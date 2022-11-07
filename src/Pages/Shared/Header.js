@@ -11,7 +11,7 @@ const Header = () => {
         <li><Link>Register</Link></li>
     </>
     return (
-        <div className="navbar bg-indigo-100">
+        <div className="navbar bg-indigo-100 mb-7">
             <div className="container mx-auto">
                 <div className="navbar-start">
                     <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-12' src={logo} alt="logo" /> Travel More</Link>
