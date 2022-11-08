@@ -5,7 +5,7 @@ import logo from '../../Images/Logo/delivery_transportation_vehicle_transport_tr
 const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/services'>Service</Link></li>
+        <li><Link to='/services'>Services</Link></li>
         <li><Link>Blogs</Link></li>
         <li><Link>Login</Link></li>
         <li><Link>Register</Link></li>
@@ -14,7 +14,7 @@ const Header = () => {
         <div className="navbar bg-indigo-100 mb-7">
             <div className="container mx-auto">
                 <div className="navbar-start">
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-12' src={logo} alt="logo" /> Travel More</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-12' src={logo} alt="logo" /> Travel with Surjo</Link>
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>

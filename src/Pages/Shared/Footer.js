@@ -8,8 +8,8 @@ const Footer = () => {
         <footer className="footer footer-center p-5 bg-indigo-900 text-primary-content mt-auto">
             <div>
                 <img className='w-16' src={logo} alt="logo" />
-                <p className="font-bold text-xl">Travel More</p>
-                <p>We care about your safe travel</p>
+                <p className="font-bold text-xl">Travel with Surjo</p>
+                <p>Let Surjo be your travel guide</p>
                 <p className='text'>Copyright © 2022 - All right reserved</p>
             </div>
             <div>

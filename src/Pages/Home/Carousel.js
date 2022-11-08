@@ -12,10 +12,12 @@ const Carousel = () => {
                     <img src={slideImg2} alt='slide1' className="w-full" />
                     <div className="absolute text-center">
                         <p className="text-2xl font-semibold text-white bg-black bg-opacity-40 p-2 rounded-lg mb-2">
-                            “The journey of a thousand miles begins with a single step.”
+                            “The journey of a thousand miles begins with a single step.”<br />
+                            So, let Surjo be your travel guide.
+
                         </p>
                         <button className="btn btn-primary btn-sm">
-                            View Services <FaArrowRight></FaArrowRight>
+                            My Services <FaArrowRight></FaArrowRight>
                         </button>
                     </div>
                 </div>
