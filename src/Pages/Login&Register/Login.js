@@ -4,10 +4,10 @@ import loginImg from '../../Images/Login/20824342_6343845.jpg'
 
 const Login = () => {
     return (
-        <div className='container mx-auto my-5'>
+        <div className='container mx-auto my-5 shadow-lg rounded-xl p-5'>
             <div className='grid md:grid-cols-2'>
                 <div>
-                    <img className='w-full' src={loginImg} alt="" />
+                    <img className='w-full rounded-xl' src={loginImg} alt="" />
                     <div></div>
                 </div>
                 <div className='m-auto'>
