@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import logo from '../../Images/Logo/delivery_transportation_vehicle_transport_travel_icon_225386.png'
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                alert('Logged Out')
+            })
+            .catch(error => console.error(error))
+    }
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/services'>Services</Link></li>
         <li><Link>Blogs</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/register'>Register</Link></li>
+        {
+            user?.uid ?
+                <>
+                    <li><Link>My Reviews</Link></li>
+                    <li><Link>Add Services</Link></li>
+                    <li>
+                        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            <img style={{ height: '40px' }} alt='user' className='rounded-lg my-auto' src={user?.photoURL} />
+                        </div>
+                    </li>
+                    <li className='my-auto'><button onClick={handleLogOut} className='btn btn-outline btn-accent'>Logout</button></li>
+                </>
+                :
+                <>
+                    <li><Link to='/login'>Login</Link></li>
+                    <li><Link to='/register'>Registration</Link></li>
+                </>
+        }
     </>
     return (
         <div className="navbar bg-indigo-100 mb-7">
