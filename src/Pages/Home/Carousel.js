@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import slideImg1 from '../../Images/Slider/full-shot-travel-concept-with-landmarks.jpg'
 import slideImg2 from '../../Images/Slider/full-shot-woman-taking-selfie.jpg'
 import slideImg3 from '../../Images/Slider/travel-world.jpg'
@@ -16,9 +17,9 @@ const Carousel = () => {
                             So, let Surjo be your travel guide.
 
                         </p>
-                        <button className="btn btn-primary btn-sm">
+                        <Link to='/services'><button className="btn btn-primary btn-sm">
                             My Services <FaArrowRight></FaArrowRight>
-                        </button>
+                        </button></Link>
                     </div>
                 </div>
                 <div id="item2" className="carousel-item w-full">
