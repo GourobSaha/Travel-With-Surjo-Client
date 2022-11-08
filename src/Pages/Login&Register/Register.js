@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import registerImg from '../../Images/Login/4957136_4957136.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const [error, setError] = useState('');
@@ -25,10 +26,12 @@ const Register = () => {
                 form.reset();
                 setError('');
                 handleUpdateProfile(name, photoURL);
+                toast.success('Registration Completed');
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
+                toast.error(error.message);
             })
     }
     //Profile Update
@@ -61,7 +64,7 @@ const Register = () => {
                                 <div className="space-y-4">
                                     <div>
                                         <label className="block mb-2 text-sm">Name</label>
-                                        <input type="text" name="name" id="name" placeholder="Full Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                        <input type="text" name="name" id="name" placeholder="Full Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                     </div>
                                     <div>
                                         <label className="block mb-2 text-sm">Photo URL</label>
@@ -69,13 +72,13 @@ const Register = () => {
                                     </div>
                                     <div>
                                         <label className="block mb-2 text-sm">Email address</label>
-                                        <input type="email" name="email" id="email" placeholder="example@gmail.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                        <input type="email" name="email" id="email" placeholder="example@gmail.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                     </div>
                                     <div>
                                         <div className="flex justify-between mb-2">
                                             <label className="text-sm">Password</label>
                                         </div>
-                                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                     </div>
                                 </div>
                                 <div className="space-y-2">

@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import logo from '../../Images/Logo/delivery_transportation_vehicle_transport_travel_icon_225386.png'
+import toast from 'react-hot-toast';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -9,7 +11,7 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                alert('Logged Out')
+                toast.success('Logged Out');
             })
             .catch(error => console.error(error))
     }
@@ -22,11 +24,20 @@ const Header = () => {
                 <>
                     <li><Link>My Reviews</Link></li>
                     <li><Link>Add Services</Link></li>
-                    <li>
-                        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                            <img style={{ height: '40px' }} alt='user' className='rounded-lg my-auto' src={user?.photoURL} />
-                        </div>
-                    </li>
+                    {
+                        user?.photoURL ?
+                            <li>
+                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <img style={{ height: '40px' }} alt='user' className='rounded-lg my-auto' src={user?.photoURL} />
+                                </div>
+                            </li>
+                            :
+                            <li>
+                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <FaUser className='h-10'></FaUser>
+                                </div>
+                            </li>
+                    }
                     <li className='my-auto'><button onClick={handleLogOut} className='btn btn-outline btn-accent'>Logout</button></li>
                 </>
                 :

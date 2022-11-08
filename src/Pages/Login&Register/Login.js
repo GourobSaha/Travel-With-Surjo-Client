@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import loginImg from '../../Images/Login/20824342_6343845.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -24,10 +25,12 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
+                toast.success('Successfully Logged In');
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
+                toast.error(error.message);
             })
     }
     return (
@@ -47,13 +50,13 @@ const Login = () => {
                             <div className="space-y-4">
                                 <div>
                                     <label className="block mb-2 text-sm">Email address</label>
-                                    <input type="email" name="email" id="email" placeholder="example@gmail.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                    <input type="email" name="email" id="email" placeholder="example@gmail.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                 </div>
                                 <div>
                                     <div className="flex justify-between mb-2">
                                         <label className="text-sm">Password</label>
                                     </div>
-                                    <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                    <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                 </div>
                             </div>
                             <div className="space-y-2">
