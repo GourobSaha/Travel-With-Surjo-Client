@@ -5,8 +5,10 @@ import Blogs from "../../Pages/Blogs/Blogs";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login&Register/Login";
 import Register from "../../Pages/Login&Register/Register";
+import MyReviews from "../../Pages/Reviews/MyReviews";
 import ServiceDetails from "../../Pages/Service/ServiceDetails";
 import Services from "../../Pages/Service/Services";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -43,7 +45,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addservices',
-                element: <AddServices></AddServices>
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
+            },
+            {
+                path: '/myreviews',
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             }
         ]
     }

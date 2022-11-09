@@ -1,13 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import registerImg from '../../Images/Login/4957136_4957136.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-    const [error, setError] = useState('');
     const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -24,13 +28,12 @@ const Register = () => {
                 const user = res.user;
                 console.log(user);
                 form.reset();
-                setError('');
                 handleUpdateProfile(name, photoURL);
+                navigate(from, { replace: true });
                 toast.success('Registration Completed');
             })
             .catch(error => {
                 console.error(error);
-                setError(error.message);
                 toast.error(error.message);
             })
     }
@@ -68,7 +71,7 @@ const Register = () => {
                                     </div>
                                     <div>
                                         <label className="block mb-2 text-sm">Photo URL</label>
-                                        <input type="text" name="photoURL" id="photoURL" placeholder="Photo URL" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" />
+                                        <input type="text" name="photoURL" id="photoURL" placeholder="Photo URL" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100" required />
                                     </div>
                                     <div>
                                         <label className="block mb-2 text-sm">Email address</label>

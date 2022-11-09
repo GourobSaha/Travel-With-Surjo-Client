@@ -12,12 +12,12 @@ const ServiceDetails = () => {
 
 
     const handleSubmitReview = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         const form = event.target;
         const review = form.review.value;
         const serviceName = name;
         const userName = user?.displayName || "Anonymous";
-        const userEmail = user?.email || "Unregister";
+        const email = user?.email || "Unregistered";
         const userPhotoUrl = user?.photoURL;
 
         const date = new Date();
@@ -26,7 +26,7 @@ const ServiceDetails = () => {
             service_id: _id,
             serviceName,
             userName,
-            userEmail,
+            email,
             review,
             date,
             userPhotoUrl,
@@ -72,7 +72,7 @@ const ServiceDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mt-6 w-full md:w-1/2'>
+                <div className='mt-6 w-full md:w-1/2 md:px-5'>
 
                     <div>
                         <ReviewAll></ReviewAll>

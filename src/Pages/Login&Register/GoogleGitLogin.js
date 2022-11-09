@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const GoogleGitLogin = () => {
     const { providerLogin } = useContext(AuthContext);
@@ -10,11 +11,17 @@ const GoogleGitLogin = () => {
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
             })
             .catch(error => {
@@ -27,6 +34,7 @@ const GoogleGitLogin = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
             })
             .catch(error => {

@@ -13,8 +13,6 @@ const ReviewAll = () => {
             .then(data => setReviewAll(data))
     }, [_id])
 
-    console.log();
-
     return (
         <div>
             <h2 className='text-4xl font-semibold text-center text-indigo-600'>Reviews :{reviewAll.length}</h2>

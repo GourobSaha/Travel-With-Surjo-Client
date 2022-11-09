@@ -1,13 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import loginImg from '../../Images/Login/20824342_6343845.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
 import toast from 'react-hot-toast';
 
 const Login = () => {
-    const [error, setError] = useState('');
-    const { signIn } = useContext(AuthContext);;
+    const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
 
     //Handle Submit
@@ -24,12 +28,11 @@ const Login = () => {
                 const user = res.user;
                 console.log(user);
                 form.reset();
-                setError('');
+                navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
             })
             .catch(error => {
                 console.error(error);
-                setError(error.message);
                 toast.error(error.message);
             })
     }
