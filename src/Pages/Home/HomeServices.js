@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../Service/ServiceCard';
 
 const HomeServices = () => {
-    const services = useLoaderData();
-    const servicesHome = services.slice(0, 3);
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        const url = 'http://localhost:5000/services?size=3';
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setServices(data);
+            });
+    }, []);
+
     return (
         <div className='container mx-auto my-5'>
             <h2 className='text-4xl font-semibold text-center text-indigo-600'>Surjo's Services</h2>
             <p className='text-center mb-6'>I will give you the best travel experience. I'm not just a travel guide with route knowledge <br /> but have the knowledge of the history of all the places.</p>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4'>
                 {
-                    servicesHome.map(service => <ServiceCard
+                    services.map(service => <ServiceCard
                         key={service._id}
                         service={service}
                     ></ServiceCard>)

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import registerImg from '../../Images/Login/4957136_4957136.jpg'
@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +21,7 @@ const Register = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
-
+        setLoading(true);
         console.log(name, email, photoURL, password);
         //Creating User
         createUser(email, password)
@@ -29,12 +30,14 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 handleUpdateProfile(name, photoURL);
+                setLoading(false);
                 navigate(from, { replace: true });
                 toast.success('Registration Completed');
             })
             .catch(error => {
                 console.error(error);
                 toast.error(error.message);
+                setLoading(false);
             })
     }
     //Profile Update
@@ -48,6 +51,9 @@ const Register = () => {
             .catch(error => console.error(error))
     }
 
+    if (loading) {
+        return <progress className="mx-auto my-auto progress w-56"></progress>
+    }
 
     return (
         <div>

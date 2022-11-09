@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import loginImg from '../../Images/Login/20824342_6343845.jpg'
@@ -7,12 +7,13 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
+
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
-
 
     //Handle Submit
     const handleSubmit = event => {
@@ -20,7 +21,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-
+        setLoading(true)
         console.log(email, password);
         //User Sign in
         signIn(email, password)
@@ -30,12 +31,19 @@ const Login = () => {
                 form.reset();
                 navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
                 toast.error(error.message);
+                setLoading(false);
             })
     }
+
+    if (loading) {
+        return <progress className="mx-auto my-auto progress w-56"></progress>
+    }
+
     return (
         <div className='container mx-auto my-5 shadow-lg rounded-xl p-5'>
             <div className='grid md:grid-cols-2'>

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MyReviewsCard = ({ reviewOne }) => {
+const MyReviewsCard = ({ reviewOne, handleDelete }) => {
 
-    const { userPhotoUrl, userName, review, date } = reviewOne;
+    const { _id, userPhotoUrl, userName, review, date, serviceName } = reviewOne;
+
+
     return (
         <div>
             <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
@@ -18,10 +21,11 @@ const MyReviewsCard = ({ reviewOne }) => {
                     </div>
                 </div>
                 <div className="p-4 space-y-2 text-sm dark:text-gray-400">
-                    <p>{review}</p>
+                    <h3 className='font-bold text-lg'>Service: {serviceName}</h3>
+                    <p>Review: {review}</p>
                     <div className='flex justify-between'>
-                        <button className='btn btn-primary btn-sm'>Edit</button>
-                        <button className='btn btn-accent btn-sm'>Delete</button>
+                        <Link to={`/update/${_id}`}><button className='btn btn-primary btn-sm'>Edit Review</button></Link>
+                        <button onClick={() => handleDelete(_id)} className='btn btn-accent btn-sm'>Delete Review</button>
                     </div>
                 </div>
             </div>
