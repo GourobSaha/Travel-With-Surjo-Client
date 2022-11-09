@@ -4,10 +4,12 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import registerImg from '../../Images/Login/4957136_4957136.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    useTitle('Registration')
 
     const navigate = useNavigate();
     const location = useLocation();

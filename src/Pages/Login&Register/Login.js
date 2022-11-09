@@ -4,10 +4,12 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import loginImg from '../../Images/Login/20824342_6343845.jpg'
 import GoogleGitLogin from './GoogleGitLogin';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
+    useTitle('Login');
 
 
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        setLoading(true)
+        setLoading(true);
         console.log(email, password);
         //User Sign in
         signIn(email, password)

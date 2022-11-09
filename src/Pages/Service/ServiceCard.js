@@ -11,7 +11,7 @@ const ServiceCard = ({ service }) => {
             <figure className="px-5 pt-5">
                 <PhotoProvider>
                     <PhotoView src={img}>
-                        <img className='rounded-2xl' src={img} style={{ objectFit: 'cover' }} alt="places" />
+                        <img className='rounded-2xl w-full h-80' src={img} style={{ objectFit: 'cover' }} alt="places" />
                     </PhotoView>
                 </PhotoProvider>
             </figure>

@@ -6,11 +6,13 @@ import toast from 'react-hot-toast';
 import ReviewAll from '../Reviews/ReviewAll';
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import useTitle from '../../Hooks/useTitle';
 
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData();
     const { user } = useContext(AuthContext);
     const { _id, name, price, img, description, rating, duration } = serviceDetails;
+    useTitle('Service Detail')
 
 
     const handleSubmitReview = (event) => {
@@ -60,7 +62,7 @@ const ServiceDetails = () => {
                     <figure className="px-10 pt-10">
                         <PhotoProvider>
                             <PhotoView src={img}>
-                                <img src={img} style={{ objectFit: 'cover' }} alt="places" />
+                                <img className='rounded-2xl w-full' src={img} style={{ objectFit: 'cover' }} alt="places" />
                             </PhotoView>
                         </PhotoProvider>
                     </figure>

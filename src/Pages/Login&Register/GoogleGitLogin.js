@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const GoogleGitLogin = () => {
     const { providerLogin } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
@@ -17,31 +18,42 @@ const GoogleGitLogin = () => {
     const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
+        setLoading(true);
         providerLogin(googleProvider)
             .then(res => {
                 const user = res.user;
                 console.log(user);
                 navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
                 toast.error(error.message);
+                setLoading(false);
             })
     }
     const handleGitHubSignIn = () => {
+        setLoading(true);
         providerLogin(gitHubProvider)
             .then(res => {
                 const user = res.user;
                 console.log(user);
                 navigate(from, { replace: true });
                 toast.success('Successfully Logged In');
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
                 toast.error(error.message);
+                setLoading(false);
             })
     }
+
+    if (loading) {
+        return <progress className="mx-auto my-auto progress w-56"></progress>
+    }
+
     return (
         <div>
             <button onClick={handleGoogleSignIn} className="btn btn-secondary w-full btn-sm mb-2"><FaGoogle className='mr-1' /> Login With Google</button>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../Hooks/useTitle';
 import ServiceCard from './ServiceCard';
 
 const Services = () => {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
+    useTitle('Services');
 
     useEffect(() => {
         const url = "http://localhost:5000/services";
