@@ -4,6 +4,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import ReviewAll from '../Reviews/ReviewAll';
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceDetails = () => {
     const serviceDetails = useLoaderData();
@@ -12,7 +14,7 @@ const ServiceDetails = () => {
 
 
     const handleSubmitReview = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         const form = event.target;
         const review = form.review.value;
         const serviceName = name;
@@ -56,7 +58,11 @@ const ServiceDetails = () => {
             <div className='flex flex-col md:flex-row'>
                 <div className="card bg-base-100 w-full md:w-1/2 h-full shadow-xl">
                     <figure className="px-10 pt-10">
-                        <img src={img} alt="places" className="rounded-xl" />
+                        <PhotoProvider>
+                            <PhotoView src={img}>
+                                <img src={img} style={{ objectFit: 'cover' }} alt="places" />
+                            </PhotoView>
+                        </PhotoProvider>
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title text-3xl text-indigo-600">{name}</h2>

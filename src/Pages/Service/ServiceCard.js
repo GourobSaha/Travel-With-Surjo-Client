@@ -1,13 +1,19 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
     const { _id, name, img, price, description } = service;
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={img} alt="places" className="rounded-xl" />
+            <figure className="px-5 pt-5">
+                <PhotoProvider>
+                    <PhotoView src={img}>
+                        <img className='rounded-2xl' src={img} style={{ objectFit: 'cover' }} alt="places" />
+                    </PhotoView>
+                </PhotoProvider>
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title text-3xl text-indigo-600">{name}</h2>
