@@ -30,10 +30,27 @@ const Register = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+
+                const currentUser = {
+                    email: user.email
+                }
+                console.log(currentUser);
                 form.reset();
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data);
+                        localStorage.setItem('Secret-Token', data.token);
+                        navigate(from, { replace: true });
+                    })
                 handleUpdateProfile(name, photoURL);
                 setLoading(false);
-                navigate(from, { replace: true });
                 toast.success('Registration Completed');
             })
             .catch(error => {
