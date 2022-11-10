@@ -36,7 +36,7 @@ const MyReviews = () => {
                 .then(data => {
                     console.log(data)
                     if (data.deletedCount > 0) {
-                        toast.success('Service Added Successfully');
+                        toast.success('Review Deleted Successfully');
                         const remainingReviews = reviewAll.filter(riv => riv._id !== id);
                         setReviewAll(remainingReviews);
                     }

@@ -48,7 +48,7 @@ const ServiceDetails = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    toast.success('Service Added Successfully');
+                    toast.success('Review Added Successfully');
                     form.reset();
                 }
             })
