@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import AddServices from "../../Pages/AddServices/AddServices";
 import Blogs from "../../Pages/Blogs/Blogs";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login&Register/Login";
 import Register from "../../Pages/Login&Register/Register";
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                     fetch(`http://localhost:5000/reviews/${params.id}`)
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
 ]);
 
