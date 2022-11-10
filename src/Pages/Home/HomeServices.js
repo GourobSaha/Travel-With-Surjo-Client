@@ -7,7 +7,7 @@ const HomeServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:5000/services?size=3';
+        const url = 'https://travel-more-server.vercel.app/services?size=3';
         fetch(url)
             .then((res) => res.json())
             .then((data) => {

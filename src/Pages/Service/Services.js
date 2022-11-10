@@ -8,7 +8,7 @@ const Services = () => {
     useTitle('Services');
 
     useEffect(() => {
-        const url = "http://localhost:5000/services";
+        const url = "https://travel-more-server.vercel.app/services";
 
         fetch(url)
             .then((res) => res.json())

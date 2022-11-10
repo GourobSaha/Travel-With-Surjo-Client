@@ -36,7 +36,7 @@ const Register = () => {
                 }
                 console.log(currentUser);
                 form.reset();
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://travel-more-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

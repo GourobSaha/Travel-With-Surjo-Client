@@ -8,7 +8,7 @@ const ReviewAll = () => {
     const { _id } = serviceDetails;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewServices?service_id=${_id}`)
+        fetch(`https://travel-more-server.vercel.app/reviewServices?service_id=${_id}`)
             .then(res => res.json())
             .then(data => setReviewAll(data))
     }, [_id])

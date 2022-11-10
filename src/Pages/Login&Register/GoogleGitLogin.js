@@ -29,7 +29,7 @@ const GoogleGitLogin = () => {
                 }
                 console.log(currentUser);
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://travel-more-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -63,7 +63,7 @@ const GoogleGitLogin = () => {
                 }
                 console.log(currentUser);
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://travel-more-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -13,7 +13,7 @@ const UpdateReview = () => {
         event.preventDefault();
 
         console.log(reviews);
-        fetch(`http://localhost:5000/reviews/${updateReview._id}`, {
+        fetch(`https://travel-more-server.vercel.app/reviews/${updateReview._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
